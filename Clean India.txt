@@ -1,0 +1,514 @@
+CLEAN INDIA
+One QR. One Community. One Clean Corner at a Time.
+
+CORE IDEA
+
+Clean India is a minimalist, QR-first civic coordination app that enables Indian gallis and housing societies to organize and execute local clean-ups within 24 hours — without depending on government systems, without complex technology, and without handling money inside the app.
+
+It is not a complaint app.
+It is not a reporting tool.
+It is not a payment gateway.
+It is not social media.
+
+It is a coordination scaffold for real-world action.
+
+The app turns one physical location (a gate, lane, society entrance) into a digital action node through a permanent QR code.
+
+PROBLEM STATEMENT
+
+Indian lanes and societies often face:
+
+Garbage accumulation in narrow lanes
+
+Delayed municipal truck access
+
+Slow complaint resolution
+
+“Not my job” mentality
+
+No frictionless coordination tool
+
+Lack of trust in pooled money systems
+
+Result:
+Normalized filth.
+Fragmented responsibility.
+Silent frustration.
+
+SOLUTION OVERVIEW
+
+Clean India enables:
+
+Instant society creation
+
+QR-based community joining
+
+Human-language issue reporting (no GPS)
+
+Micro pooling (₹1–₹3 per member)
+
+Direct UPI payment to admin
+
+Before/after proof posting
+
+Monthly admin rotation
+
+Volunteer/clean worker network
+
+Forkable governance (self-correction)
+
+No complex infrastructure.
+No payment liability.
+No OTP.
+No bureaucracy.
+
+CORE PRINCIPLES
+
+Radical Simplicity
+
+Zero financial liability for platform
+
+Human trust > algorithmic enforcement
+
+Power rotation
+
+Low noise communication
+
+Max 2 societies per user
+
+No monetization from residents
+
+Cloud-backed but offline-first behavior mindset
+
+USER ROLES
+
+There are two global identity states:
+
+A. Regular User
+B. Volunteer / Clean Worker
+
+Inside a society, roles are:
+
+Admin (Main Admin)
+
+Co-Admin / Sub-Admin
+
+Member
+
+Important:
+Any individual can join maximum 2 societies total.
+Role does not override this limit.
+
+Examples:
+
+Admin in Home Society + Member in Office Society
+
+Co-Admin in Society A + Member in Society B
+
+Member in 2 societies
+Never more than 2.
+
+SOCIETY CREATION
+
+Flow:
+
+Tap "Create Society"
+
+Enter society/galli name (duplicates allowed globally)
+
+System generates permanent unique slug:
+Example: cleanindia.app/jX9k2
+
+Permanent QR is generated
+
+Creator becomes Admin #1
+
+There is:
+
+No name validation
+
+No uniqueness enforcement on society name
+
+Only slug is unique
+
+QR becomes the digital identity of that community.
+
+JOINING A SOCIETY
+
+Flow:
+
+Scan QR OR enter slug manually
+
+Enter flat/house number (e.g., B-304)
+
+Join instantly
+
+No:
+
+OTP
+
+Admin approval
+
+Verification
+
+Waiting
+
+Hard Rule:
+User cannot join more than 2 societies.
+Enforced at Firestore security rule level.
+
+Feed displays posts only from joined societies.
+
+APP STRUCTURE (4 TAB NAVIGATION)
+
+TAB 1: HOME / WORK
+
+Purpose:
+
+Create society
+
+Join society
+
+See governance alerts
+
+See clean-up pooling alerts
+
+See election reminders
+
+Dynamic alerts appear here:
+
+“Admin rotation due”
+
+“Clean-up pool started”
+
+“You’ve used 3/3 messages today”
+
+Only data from joined societies appears.
+
+TAB 2: SOCIETY GROUP
+
+At top:
+If user joined 2 societies, dropdown to switch.
+
+Inside society:
+
+Issue feed (photo + description)
+
+Clean-up announcements
+
+Before/after proof posts
+
+Limited chat
+
+Chat Rules:
+
+Max 3 messages per day per user per society
+
+Messages can be unlimited in wording
+
+Photo/video allowed within those 3
+
+Counter resets daily
+
+Purpose:
+Avoid spam.
+Avoid debates.
+Encourage action-only communication.
+
+TAB 3: VOLUNTEER / CLEAN WORKER
+
+Any user can register as:
+
+Social worker
+
+Cleaner
+
+Volunteer
+
+They must specify:
+
+Area/Region (e.g., Pimple Gurav, Sanghvi)
+
+Availability
+
+Admins can:
+
+Filter by area
+
+Contact worker
+
+Hire offline
+
+Pay from pooled money
+
+App does NOT:
+
+Handle payments
+
+Take commission
+
+Mediate salary
+
+This creates micro part-time employment.
+
+TAB 4: PROFILE
+
+Contains:
+
+Joined societies (max 2)
+
+Role in each society
+
+Leave society
+
+Transfer admin (if admin)
+
+Message usage counter
+
+Worker registration toggle
+
+CLEAN-UP POOLING SYSTEM
+
+When issue escalates:
+
+Admin taps "Start Clean-Up"
+
+App:
+
+Overlays society name on admin’s pre-saved UPI QR
+
+Posts in society feed
+
+Members:
+
+Pay directly to admin’s UPI
+
+₹1–₹3 micro contributions
+
+App handles ZERO money.
+
+Admin:
+
+Hires worker OR organizes volunteers
+
+Posts before/after images
+
+GOVERNANCE SYSTEM
+
+Admin Powers:
+
+Start clean-up
+
+Add Co-Admin
+
+Remove misbehaving members
+
+Transfer admin role
+
+Co-Admin Powers:
+
+Remove members
+
+Assist governance
+
+Member:
+
+Post issues
+
+Chat (3/day)
+
+Leave society
+
+Admin Rotation Rule:
+Every month:
+
+Main admin must change OR
+
+Election must occur
+
+Purpose:
+
+Distribute responsibility
+
+Prevent power concentration
+
+Build civic participation
+
+If admin refuses:
+Members can fork.
+
+FORKING (SELF-CORRECTION)
+
+If trust breaks:
+
+Members leave society
+
+Create new society (same name allowed)
+
+New QR generated
+
+Share new QR
+
+Community migrates
+
+No bans.
+No global punishment.
+Social reality corrects leadership.
+
+MESSAGE LIMIT PHILOSOPHY
+
+Max 3 messages per day per society per user.
+
+Why:
+
+Reduce noise
+
+Prevent fights
+
+Focus on solution
+
+Avoid WhatsApp-style chaos
+
+Unlimited wording inside those 3 messages.
+Quality > Quantity.
+
+TECH ARCHITECTURE
+
+Frontend:
+React Native (Expo)
+
+Backend:
+Firebase Firestore
+
+Auth:
+Firebase Anonymous Authentication
+
+Storage:
+Firebase Storage
+Images auto-delete:
+
+After 7 days OR
+
+When marked resolved
+
+Critical Rule:
+Firestore security enforces:
+user.joinedSocieties.length ≤ 2
+
+No custom servers.
+Low maintenance.
+Low cost scaling.
+
+COST STRUCTURE
+
+Initial:
+₹0/month for early users
+
+Scale:
+~₹500/month at 1 lakh users (approx.)
+
+No server DevOps.
+No payment compliance cost.
+
+BUSINESS MODEL
+
+App is 100% free for communities.
+
+Revenue sources:
+
+Municipal Heatmaps
+Sell anonymized aggregate data to wards:
+
+Clean-up density
+
+Waste type patterns
+
+Hotspot areas
+
+CSR Sponsorships
+Brands sponsor:
+
+Plastic-Free Galli challenges
+
+Clean Drive competitions
+
+Platform takes 10–20% facilitation fee.
+
+RWA Premium
+Affluent societies pay subscription for:
+
+Custom QR branding
+
+PDF reports
+
+CSR priority
+
+Never monetize residents.
+Monetize institutions benefiting from clean ecosystems.
+
+LAUNCH PROTOCOL (72 HOURS)
+
+Day 1:
+Create society → Print QR → Stick at gate
+
+Day 2:
+5 neighbors join → Post real issue
+
+Day 3:
+Pool ₹20 → Hire cleaner → Post before/after
+
+Celebrate.
+Share proof.
+Expand.
+
+WHY THIS WORKS IN INDIA
+
+QR codes culturally accepted
+
+UPI penetration high
+
+Micro-payments psychologically painless
+
+WhatsApp-style migration intuitive
+
+No complex tech barriers
+
+Works on low-cost Android phones
+
+No GPS dependency
+
+PHILOSOPHY
+
+The app does not clean streets.
+
+People clean streets.
+
+The app only reduces coordination friction.
+
+Trust lives in society.
+Power rotates.
+Money flows directly.
+Responsibility is shared.
+
+If leadership fails — fork.
+
+FINAL VISION
+
+Clean India becomes:
+
+A QR-based,
+self-governed,
+low-noise,
+micro-employment-enabled,
+community civic engine.
+
+It transforms:
+
+Collective frustration
+into
+collective micro-action.
+
+One QR.
+One society.
+One ₹2 contribution.
+One clean corner at a time.
